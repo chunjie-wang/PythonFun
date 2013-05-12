@@ -1,5 +1,4 @@
 import sys
-#sys.stdin=open('input.txt', 'r')
 sys.stdout=open('output.txt', 'w')
 sys.stdin=open('B-small-practice.in', 'r')
 
