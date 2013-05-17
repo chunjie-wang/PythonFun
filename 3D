@@ -1,0 +1,56 @@
+#include<stdio.h>
+#include<iostream>
+#include<string.h>
+#include<stdlib.h>
+#include<algorithm>
+#include<vector>
+#include<string>
+#include<map>
+#include<stack>
+#include<sstream>
+#include<unordered_map>
+#include<queue>
+#ifdef DEBUG_MY
+#include "mydebug.h"
+#undef DEBUG_MY
+#endif
+using namespace std;
+
+typedef pair<int, int> PP;
+int main()  
+{  
+    string s; 
+    priority_queue<PP> q;
+    long long a, b, l, len, cost;  
+    PP tmp;  
+    cin>>s;
+    l = 0;  
+    cost = 0;  
+    for(int i = 0;i < s.length(); i++)  
+    {  
+        if(s[i] == '(') l ++;  
+        else if(s[i] == ')') l --;  
+        else  
+        {  
+            cin>>a>>b;  
+            tmp.first = b-a;
+            tmp.second = i; 
+            q.push(tmp); 
+            s[i] = ')';  
+            l--;  
+            cost += b;  
+        }  
+        if(l < 0)  
+        {  
+            if(q.empty()) break;  
+            tmp = q.top();  
+            q.pop();
+            cost -= tmp.first;
+            s[tmp.second] = '(';  
+            l +=2;  
+        }  
+    }  
+
+    if(l != 0) cout<<-1<<endl;  
+    else cout<<cost<<endl<<s<<endl;         
+}
