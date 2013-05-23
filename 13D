@@ -1,0 +1,9 @@
+struct node {
+    int x,y,z;
+    bool operator<(const node &l, const node &r) const {
+        if (l.x != r.x) return l.x>r.x;
+        return l.y != r.y ? l.y < r.y : l.z < r.z;
+    }
+};
+
+map<int, int> mp;
